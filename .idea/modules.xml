@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RichSnippets.iml" filepath="$PROJECT_DIR$/RichSnippets.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/snippets/richsnippets2.iml" filepath="$PROJECT_DIR$/snippets/richsnippets2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/snippet/snippet.iml" filepath="$PROJECT_DIR$/snippet/snippet.iml" />
     </modules>
   </component>
 </project>

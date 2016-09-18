@@ -1,1 +1,1 @@
-include ':app', ':snippets'
+include ':app', ':snippet'
