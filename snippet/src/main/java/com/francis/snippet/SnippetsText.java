@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.text.Editable;
 import android.text.Spanned;
+import android.text.TextWatcher;
 import android.text.style.StyleSpan;
 import android.util.AttributeSet;
 import android.widget.EditText;
@@ -14,7 +16,7 @@ import android.widget.EditText;
  * @author taoc @ Zhihu Inc.
  * @since 09-18-2016
  */
-public class SnippetsText extends EditText {
+public class SnippetsText extends EditText implements TextWatcher {
 
 	public static final int FORMAT_BOLD = 0x01;
 	public static final int FORMAT_ITALIC = 0x02;
@@ -78,6 +80,18 @@ public class SnippetsText extends EditText {
 		}
 	}
 
+	@Override
+	protected void onAttachedToWindow() {
+		super.onAttachedToWindow();
+		addTextChangedListener(this);
+	}
+
+	@Override
+	protected void onDetachedFromWindow() {
+		super.onDetachedFromWindow();
+		removeTextChangedListener(this);
+	}
+
 	// StyleSpan ===================================================
 
 	public void bold(boolean valid) {
@@ -121,9 +135,20 @@ public class SnippetsText extends EditText {
 		StyleSpan[] spans = getEditableText().getSpans(start, end, StyleSpan.class);
 
 
+	}
 
+	@Override
+	public void onTextChanged(CharSequence text, int start, int lengthBefore, int lengthAfter) {
+		super.onTextChanged(text, start, lengthBefore, lengthAfter);
+	}
 
+	@Override
+	public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+	}
+
+	@Override
+	public void afterTextChanged(Editable editable) {
 
 	}
 }
