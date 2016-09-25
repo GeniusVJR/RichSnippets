@@ -2,6 +2,7 @@ package com.francis.snippet;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.text.Spanned;
@@ -23,8 +24,11 @@ public class SnippetsText extends EditText {
 	public static final int FORMAT_QUOTE = 0x06;
 	public static final int FORMAT_LINK = 0x07;
 
+
+
 	public SnippetsText(Context context) {
 		super(context);
+
 	}
 
 	public SnippetsText(Context context, AttributeSet attrs) {
@@ -38,6 +42,10 @@ public class SnippetsText extends EditText {
 	@TargetApi (Build.VERSION_CODES.LOLLIPOP)
 	public SnippetsText(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
 		super(context, attrs, defStyleAttr, defStyleRes);
+	}
+
+	private void init(AttributeSet attrs){
+		//TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.K)
 	}
 
 	// StyleSpan ===================================================
