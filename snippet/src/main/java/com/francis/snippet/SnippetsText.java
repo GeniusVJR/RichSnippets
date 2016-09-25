@@ -24,28 +24,58 @@ public class SnippetsText extends EditText {
 	public static final int FORMAT_QUOTE = 0x06;
 	public static final int FORMAT_LINK = 0x07;
 
+	private int bulletColor = 0;
+	private int bulletRadius = 0;
+	private int bulletGapWidth = 0;
+	private boolean historyEnable = true;
+	private int historySize = 100;
+	private int linkColor = 0;
+	private boolean linkUnderline = true;
+	private int quoteColor = 0;
+	private int quoteStripeWidth = 0;
+	private int quoteGapWidth = 0;
+
+
 
 
 	public SnippetsText(Context context) {
 		super(context);
-
+		init(null);
 	}
 
 	public SnippetsText(Context context, AttributeSet attrs) {
 		super(context, attrs);
+		init(attrs);
 	}
 
 	public SnippetsText(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
+		init(attrs);
 	}
 
 	@TargetApi (Build.VERSION_CODES.LOLLIPOP)
 	public SnippetsText(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
 		super(context, attrs, defStyleAttr, defStyleRes);
+		init(attrs);
 	}
 
 	private void init(AttributeSet attrs){
-		//TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.K)
+		TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.KnifeText);
+		bulletColor = array.getColor(R.styleable.KnifeText_bulletColor, 0);
+		bulletRadius = array.getDimensionPixelOffset(R.styleable.KnifeText_bulletRadius, 0);
+		bulletGapWidth = array.getDimensionPixelOffset(R.styleable.KnifeText_bulletGapWidth, 0);
+		historyEnable = array.getBoolean(R.styleable.KnifeText_historyEnable, true);
+		historySize = array.getInt(R.styleable.KnifeText_historySize, 100);
+		linkColor = array.getColor(R.styleable.KnifeText_linkColor, 0);
+		linkUnderline = array.getBoolean(R.styleable.KnifeText_linkUnderline, true);
+		quoteColor = array.getColor(R.styleable.KnifeText_quoteColor, 0);
+		quoteStripeWidth = array.getDimensionPixelSize(R.styleable.KnifeText_quoteStripeWidth, 0);
+		quoteGapWidth = array.getDimensionPixelSize(R.styleable.KnifeText_quoteCapWidth, 0);
+		array.recycle();
+
+		if(historyEnable && historySize <= 0){
+			throw new IllegalArgumentException("historySize must > 0");
+		}
 	}
 
 	// StyleSpan ===================================================
